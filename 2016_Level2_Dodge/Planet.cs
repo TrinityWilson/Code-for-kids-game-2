@@ -21,10 +21,10 @@ namespace _2016_Level2_Dodge
         {
             x = spacing;
             y = 10;
-            width = 20;
-            height = 20;
+            width = 40;
+            height = 50;
 
-            planetImage = Image.FromFile("alien-ufo-png.png");
+            planetImage = Image.FromFile("alien-ufo.png");
             planetRec = new Rectangle(x, y, width, height);
         }
         // Methods for the Planet class

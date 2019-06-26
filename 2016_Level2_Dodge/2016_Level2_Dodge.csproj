@@ -52,6 +52,7 @@
     <Compile Include="frmDodge.Designer.cs">
       <DependentUpon>frmDodge.cs</DependentUpon>
     </Compile>
+    <Compile Include="move.cs" />
     <Compile Include="Planet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

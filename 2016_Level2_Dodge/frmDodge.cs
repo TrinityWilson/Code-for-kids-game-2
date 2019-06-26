@@ -37,7 +37,7 @@ namespace _2016_Level2_Dodge
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-           
+
 
             for (int i = 0; i < 7; i++)
             { // generate a random number from 5 to 20 and put it in rndmspeed
@@ -50,17 +50,9 @@ namespace _2016_Level2_Dodge
             spaceship.drawSpaceship(g);
         }
 
-        private void frmDodge_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Left) { left = true; }
-            if (e.KeyData == Keys.Right) { right = true; }
-        }
 
-        private void frmDodge_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Left) { left = false; }
-            if (e.KeyData == Keys.Right) { right = false; }
-        }
+
+
 
         private void tmrShip_Tick(object sender, EventArgs e)
         {
@@ -106,10 +98,29 @@ namespace _2016_Level2_Dodge
 
         }
 
+
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmDodge_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; }
+            if (e.KeyData == Keys.Right) { right = true; }
+        }
+
+        private void frmDodge_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; }
+            if (e.KeyData == Keys.Right) { right = false; }
+        }
+
         private void tmrPlanet_Tick(object sender, EventArgs e)
         {
             score = 0;
-            for(int i =0;i<7;i++)
+            for (int i = 0; i < 7; i++)
             {
                 planet[i].movePlanet();
                 if (spaceship.spaceRec.IntersectsWith(planet[i].planetRec))
@@ -118,28 +129,31 @@ namespace _2016_Level2_Dodge
                     planet[i].y = 30; // set  y value of planetRec
                     lives -= 1;// lose a life
                     txtLives.Text = lives.ToString();// display number of lives
-                    checkLives();
+                    CheckLives();
                 }
 
                 score += planet[i].score;
                 lblScore.Text = score.ToString();
                 pnlGame.Invalidate();
-               // if(planet[i].planetRec.Y > pnlGame.ClientSize.Height)
-               // {
+                // if(planet[i].planetRec.Y > pnlGame.ClientSize.Height)
+                // {
 
-              //  }
+                //  }
             }
         }
-        private void checkLives()
+        private void CheckLives()
         {
             if (lives == 0)
             {
                 tmrPlanet.Enabled = false;
                 tmrShip.Enabled = false;
-                MessageBox.Show("Game Over");
-
+                MessageBox.Show("Gameover");
+                                
+               txtName.Focus();
             }
         }
+    
+
 
     }
 }

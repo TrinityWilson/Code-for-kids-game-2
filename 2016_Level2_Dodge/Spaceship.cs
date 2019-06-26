@@ -19,18 +19,18 @@ namespace _2016_Level2_Dodge
         //Create a constructor (initialises the values of the fields)
         public Spaceship()
         {
-            x = 10;
+            x = 180;
             y = 360;
             width = 40;
-            height = 40;
-            spaceship = Image.FromFile("Spaceship1-png.png");
+            height = 65;
+            spaceship = Image.FromFile("Spaceship1.png");
             spaceRec = new Rectangle(x, y, width, height);
         }
         //methods
         public void drawSpaceship(Graphics g)
         {
             spaceRec = new Rectangle(x, y, width, height);
-            g.DrawImage(spaceship1-png, spaceRec);
+            g.DrawImage(spaceship, spaceRec);
         }
         public void moveSpaceship(string move)
         {
@@ -41,28 +41,42 @@ namespace _2016_Level2_Dodge
                 if (spaceRec.Location.X > 450) // is spaceship within 50 of right side
                 {
 
-                    x = 40;
+                    x = 50;
                     spaceRec.Location = new Point(x, y);
                 }
                 else
                 {
-                    x += 5;
+                    x += 15;
                     spaceRec.Location = new Point(x, y);
                 }
 
             }
-
+            //hi
             if (move == "left")
             {
                 if (spaceRec.Location.X < 10) // is spaceship within 10 of left side
                 {
 
-                    x = 10;
+                    x = 20;
                     spaceRec.Location = new Point(x, y);
                 }
                 else
                 {
-                    x -= 5;
+                    x -= 15;
+                    spaceRec.Location = new Point(x, y);
+                }
+
+            }if (move == "up")
+            {
+                if (spaceRec.Location.X< 20) // is spaceship within 20 of up side
+                {
+
+                    x = 40;
+                    spaceRec.Location = new Point(x, y);
+                }
+                else
+                {
+                    x -= 15;
                     spaceRec.Location = new Point(x, y);
                 }
 
@@ -74,3 +88,4 @@ namespace _2016_Level2_Dodge
 
     }
 }
+
