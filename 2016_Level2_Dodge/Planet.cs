@@ -20,33 +20,33 @@ namespace _2016_Level2_Dodge
         public Planet(int spacing)
         {
             x = spacing;
-            y = 10;
-            width = 40;
+            y = 20;
+            width = 50;
             height = 50;
 
             planetImage = Image.FromFile("alien-ufo.png");
             planetRec = new Rectangle(x, y, width, height);
         }
         // Methods for the Planet class
-        public void drawPlanet(Graphics g)
+        public void DrawPlanet(Graphics g)
         {
             planetRec = new Rectangle(x, y, width, height);
             g.DrawImage(planetImage, planetRec);
         }
-        public void movePlanet()
+        public void MovePlanet()
         {
-           // y += 5;
+           // y += 7;
 
             planetRec.Location = new Point(x, y);
             if (planetRec.Location.Y > 400)
             {
-                score += 1;// add 1 to score when planet reaches bottom of panel
-                y = 20;
+                score += 1;// add 2 to score when planet reaches bottom of panel
+                y = 40;
                 planetRec.Location = new Point(x, y);
             }
 
         }
 
-
+      
     }
 }

@@ -7,9 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
+using System.IO;
 
 namespace _2016_Level2_Dodge
 {
+
     public partial class frmDodge : Form
     {
         Graphics g; //declare a graphics object called g
@@ -20,9 +23,13 @@ namespace _2016_Level2_Dodge
         bool left, right;
         string move;
         int score, lives;
+        private object mylabel;
+
         public frmDodge()
         {
             InitializeComponent();
+            typeof(Panel).InvokeMember("DoubleBuffered", BindingFlags.SetProperty | BindingFlags.Instance | BindingFlags.NonPublic, null, pnlGame, new object[] { true });
+
             //
             for (int i = 0; i < 7; i++)
             {
@@ -33,50 +40,50 @@ namespace _2016_Level2_Dodge
 
         }
 
-        private void pnlGame_Paint(object sender, PaintEventArgs e)
+        private void PnlGame_Paint(object sender, PaintEventArgs e)
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-
+            spaceship.DrawSpaceship(g);
 
             for (int i = 0; i < 7; i++)
             { // generate a random number from 5 to 20 and put it in rndmspeed
-                int rndmspeed = yspeed.Next(5, 20);
+                int rndmspeed = yspeed.Next(5, 5);
                 planet[i].y += rndmspeed;
                 //call the Planet class's drawPlanet method to draw the images
-                planet[i].drawPlanet(g);
+                planet[i].DrawPlanet(g);
             }
 
-            spaceship.drawSpaceship(g);
+
         }
 
 
 
 
 
-        private void tmrShip_Tick(object sender, EventArgs e)
+        private void TmrShip_Tick(object sender, EventArgs e)
         {
             if (right) // if right arrow key pressed
             {
                 move = "right";
-                spaceship.moveSpaceship(move);
+                spaceship.MoveSpaceship(move);
             }
             if (left) // if left arrow key pressed
             {
                 move = "left";
-                spaceship.moveSpaceship(move);
+                spaceship.MoveSpaceship(move);
             }
 
         }
 
-        private void frmDodge_Load(object sender, EventArgs e)
+        private void FrmDodge_Load(object sender, EventArgs e)
         {
             MessageBox.Show("Use the left and right arrow keys to move the spaceship. \n Don't get hit by the planets! \n Every planet that gets past scores a point. \n If a planet hits a spaceship a life is lost! \n \n Enter your Name press tab and enter the number of lives \n Click Start to begin", "Game Instructions");
             txtName.Focus();
 
         }
 
-        private void mnuStart_Click(object sender, EventArgs e)
+        private void MnuStart_Click(object sender, EventArgs e)
         {
             score = 0;
             lblScore.Text = score.ToString();
@@ -86,43 +93,63 @@ namespace _2016_Level2_Dodge
 
         }
 
-        private void mnuStop_Click(object sender, EventArgs e)
+        private void MnuStop_Click(object sender, EventArgs e)
         {
             tmrShip.Enabled = false;
             tmrPlanet.Enabled = false;
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Iabel1_Click(object sender, EventArgs e)
         {
 
         }
 
 
 
-        private void label5_Click(object sender, EventArgs e)
+        private void Iabel5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void frmDodge_KeyDown(object sender, KeyEventArgs e)
+        private void FrmDodge_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = true; }
             if (e.KeyData == Keys.Right) { right = true; }
         }
 
-        private void frmDodge_KeyUp(object sender, KeyEventArgs e)
+        private void FrmDodge_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; }
             if (e.KeyData == Keys.Right) { right = false; }
         }
 
-        private void tmrPlanet_Tick(object sender, EventArgs e)
+        private void TxtLives_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Iabel2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TmrPlanet_Tick(object sender, EventArgs e)
         {
             score = 0;
             for (int i = 0; i < 7; i++)
             {
-                planet[i].movePlanet();
+                planet[i].MovePlanet();
                 if (spaceship.spaceRec.IntersectsWith(planet[i].planetRec))
                 {
                     //reset planet[i] back to top of panel
@@ -147,12 +174,13 @@ namespace _2016_Level2_Dodge
             {
                 tmrPlanet.Enabled = false;
                 tmrShip.Enabled = false;
-                MessageBox.Show("Gameover");
-                                
-               txtName.Focus();
+                GameOver.Visible = true;
+                button2.Visible = true;
+
+                txtName.Focus();
             }
         }
-    
+
 
 
     }

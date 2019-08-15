@@ -46,19 +46,61 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BitmapImage.cs" />
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDodge.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDodge.Designer.cs">
       <DependentUpon>frmDodge.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gamelogo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Gamelogo.Designer.cs">
+      <DependentUpon>Gamelogo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="level2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="level2.Designer.cs">
+      <DependentUpon>level2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="message box.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="message box.Designer.cs">
+      <DependentUpon>message box.cs</DependentUpon>
+    </Compile>
+    <Compile Include="missle fire.cs" />
     <Compile Include="move.cs" />
+    <Compile Include="music.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Planet.cs" />
+    <Compile Include="pnlGame\Invalidate.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spaceship.cs" />
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDodge.resx">
       <DependentUpon>frmDodge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gamelogo.resx">
+      <DependentUpon>Gamelogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="level2.resx">
+      <DependentUpon>level2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="message box.resx">
+      <DependentUpon>message box.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -68,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -81,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\giphy.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

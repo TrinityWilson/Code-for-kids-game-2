@@ -19,20 +19,20 @@ namespace _2016_Level2_Dodge
         //Create a constructor (initialises the values of the fields)
         public Spaceship()
         {
-            x = 180;
+            x = 210;
             y = 360;
-            width = 40;
-            height = 65;
+            width = 70;
+            height = 85;
             spaceship = Image.FromFile("Spaceship1.png");
             spaceRec = new Rectangle(x, y, width, height);
         }
         //methods
-        public void drawSpaceship(Graphics g)
+        public void DrawSpaceship(Graphics g)
         {
             spaceRec = new Rectangle(x, y, width, height);
             g.DrawImage(spaceship, spaceRec);
         }
-        public void moveSpaceship(string move)
+        public void MoveSpaceship(string move)
         {
             spaceRec.Location = new Point(x, y);
 
@@ -51,7 +51,7 @@ namespace _2016_Level2_Dodge
                 }
 
             }
-            //hi
+            //
             if (move == "left")
             {
                 if (spaceRec.Location.X < 10) // is spaceship within 10 of left side
@@ -66,19 +66,7 @@ namespace _2016_Level2_Dodge
                     spaceRec.Location = new Point(x, y);
                 }
 
-            }if (move == "up")
-            {
-                if (spaceRec.Location.X< 20) // is spaceship within 20 of up side
-                {
-
-                    x = 40;
-                    spaceRec.Location = new Point(x, y);
-                }
-                else
-                {
-                    x -= 15;
-                    spaceRec.Location = new Point(x, y);
-                }
+            
 
             }
 
@@ -88,4 +76,3 @@ namespace _2016_Level2_Dodge
 
     }
 }
-
